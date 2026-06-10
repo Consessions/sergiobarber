@@ -6,7 +6,7 @@
   <title>Cuts by Sergio | Barber in Wichita, KS</title>
   <meta name="description" content="Fresh cuts and clean fades by Sergio in Wichita, KS. Book online via Booksy. Cash only. 221 N Grove Dr.">
   <meta property="og:title" content="Cuts by Sergio | Barber in Wichita, KS">
-  <meta property="og:description" content="Fresh cuts and clean fades by Sergio in Wichita, KS. Book online via Booksy. Cash only.">
+  <meta property="og:description" content="Fresh cuts and clean fades by Sergio in Wichita, KS. Book online via Booksy.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +24,9 @@
       --gold-dark: #b8923f;
       --border: #332e27;
       --border-gold: rgba(212, 168, 84, 0.35);
-      --shadow-gold: 0 18px 50px -18px rgba(212, 168, 84, 0.55);
+      --shadow-gold: 0 12px 40px -12px rgba(212, 168, 84, 0.4);
       --shadow-deep: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+      --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     *, *::before, *::after {
@@ -41,11 +42,12 @@
       background: var(--bg);
       color: var(--fg);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3, h4, .font-display {
       font-family: "Oswald", system-ui, sans-serif;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.02em;
       text-transform: uppercase;
     }
 
@@ -60,57 +62,59 @@
       max-width: 72rem;
       margin-left: auto;
       margin-right: auto;
-      padding-left: 1.25rem;
-      padding-right: 1.25rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
 
-    /* Nav */
+    /* Header Nav Styling */
     header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 50;
-      border-bottom: 1px solid rgba(51, 46, 39, 0.6);
-      background: rgba(26, 23, 20, 0.8);
-      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(51, 46, 39, 0.4);
+      background: rgba(26, 23, 20, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: var(--transition-smooth);
     }
 
     header .container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
     }
 
     .logo {
       font-family: "Oswald", system-ui, sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       color: var(--fg);
       text-decoration: none;
+      transition: var(--transition-smooth);
     }
 
+    /* Core Button Utilities */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 0.125rem;
-      padding: 0.625rem 1.25rem;
+      border-radius: 0.25rem;
+      padding: 0.75rem 1.5rem;
       font-family: "Oswald", system-ui, sans-serif;
       font-size: 0.875rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       text-decoration: none;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: var(--transition-smooth);
       border: none;
     }
-
-    .btn:hover { transform: scale(1.03); }
 
     .btn-gold {
       background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
@@ -118,31 +122,78 @@
       box-shadow: var(--shadow-gold);
     }
 
+    .btn-gold:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px -10px rgba(212, 168, 84, 0.6);
+      filter: brightness(1.05);
+    }
+
+    .btn-gold:active { transform: translateY(0); }
+
     .btn-outline {
       border: 1px solid var(--border-gold);
       color: var(--gold);
       background: transparent;
     }
 
-    .btn-outline:hover { background: rgba(212, 168, 84, 0.08); }
+    .btn-outline:hover { 
+      background: rgba(212, 168, 84, 0.08);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
 
     .btn-lg {
-      padding: 0.875rem 2rem;
-      font-size: 0.875rem;
+      padding: 0.9rem 2.25rem;
+      font-size: 0.9rem;
     }
 
     .btn-xl {
-      padding: 1rem 2.5rem;
-      font-size: 0.875rem;
+      padding: 1.15rem 3rem;
+      font-size: 0.95rem;
     }
 
-    /* Hero */
+    /* Premium Cash Only Button Redesign (Bold layout context) */
+    .btn-cash-trigger {
+      font-family: "Oswald", system-ui, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      
+      /* Solid chunky frame configuration */
+      border: 2px solid var(--gold); 
+      border-radius: 50px; 
+      padding: 0.7rem 1.6rem;
+      background: #000000;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-cash-trigger:hover {
+      background: var(--gold);
+      color: #000000;
+      box-shadow: 0 0 25px rgba(212, 168, 84, 0.4);
+      transform: translateY(-3px);
+    }
+    
+    .btn-cash-trigger:active {
+      transform: translateY(-1px);
+    }
+
+    /* Hero Context Layout */
     .hero {
       position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
       overflow: hidden;
+      background: #12100e;
     }
 
     .hero-img {
@@ -151,105 +202,78 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: opacity 0.8s ease-in-out;
+      opacity: 0.45;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, var(--bg), rgba(26,23,20,0.85), rgba(26,23,20,0.3));
+      background: linear-gradient(to right, var(--bg) 20%, rgba(26,23,20,0.88) 50%, rgba(26,23,20,0.4));
       z-index: 1;
     }
 
     .hero-content {
       position: relative;
-      padding-top: 5rem;
+      padding-top: 6rem;
+      padding-bottom: 3rem;
       width: 100%;
       z-index: 2;
     }
 
     .hero-tag {
       font-family: "Oswald", system-ui, sans-serif;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.3em;
       color: var(--gold);
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      display: inline-block;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 700;
-      line-height: 1.05;
-      max-width: 28rem;
+      line-height: 1.1;
+      max-width: 32rem;
     }
 
     .hero p {
       margin-top: 1.5rem;
-      font-size: 1.125rem;
+      font-size: 1.15rem;
       color: var(--fg-muted);
-      max-width: 28rem;
+      max-width: 30rem;
     }
 
     .hero-actions {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
-    .badge-cash {
-      font-family: "Oswald", system-ui, sans-serif;
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--gold);
-      border: 1px solid var(--border-gold);
-      border-radius: 0.125rem;
-      padding: 0.5rem 1rem;
-    }
-
-    /* Cash banner */
-    .cash-banner {
-      border-top: 1px solid var(--border-gold);
-      border-bottom: 1px solid var(--border-gold);
-      background: var(--bg-secondary);
-      padding: 1.25rem 0;
-    }
-
-    .cash-banner .container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      text-align: center;
-    }
-
-    .cash-banner p {
-      font-family: "Oswald", system-ui, sans-serif;
-      font-size: 1.125rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Section cards */
-    .section-padded { padding: 5rem 0; }
+    /* Component Layouts */
+    .section-padded { padding: 6rem 0; }
 
     .card {
-      border-radius: 0.25rem;
+      border-radius: 0.35rem;
       border: 1px solid var(--border);
       background: var(--bg-card);
-      padding: 2rem;
+      padding: 2.5rem;
       box-shadow: var(--shadow-deep);
+      transition: var(--transition-smooth);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 168, 84, 0.2);
     }
 
     .card h2 {
-      font-size: 1.875rem;
+      font-size: 2rem;
       font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
     .services-list {
@@ -258,14 +282,14 @@
     }
 
     .services-list li {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.95rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(51, 46, 39, 0.5);
+      font-size: 0.98rem;
+      transition: var(--transition-smooth);
     }
 
-    .services-list strong {
-      color: var(--gold);
-    }
+    .services-list li:hover { padding-left: 4px; }
+    .services-list strong { color: var(--gold); }
 
     .hours-list {
       margin-top: 1.5rem;
@@ -276,113 +300,102 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.95rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(51, 46, 39, 0.5);
+      font-size: 0.98rem;
     }
 
     .hours-list .time-open { color: var(--gold); font-weight: 600; }
     .hours-list .time-closed { color: var(--fg-muted); }
 
     .card-note {
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
       font-size: 0.875rem;
       color: var(--fg-muted);
+      font-style: italic;
     }
 
-    .location-address {
-      margin-top: 1.5rem;
-    }
-
-    .location-address .street {
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
-
-    .location-address .city {
-      color: var(--fg-muted);
-    }
+    .location-address { margin-top: 1.5rem; }
+    .location-address .street { font-size: 1.25rem; font-weight: 600; }
+    .location-address .city { color: var(--fg-muted); }
 
     .map-frame {
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
       flex: 1;
-      border-radius: 0.125rem;
+      border-radius: 0.25rem;
       border: 1px solid var(--border);
       overflow: hidden;
-      min-height: 200px;
+      min-height: 250px;
     }
 
     .map-frame iframe {
       width: 100%;
       height: 100%;
-      min-height: 200px;
+      min-height: 250px;
       border: 0;
       display: block;
     }
 
-    /* Our Work Gallery Grid */
+    /* Grid/Gallery Elements */
     .section-title-area {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
-    .section-title-area h2 {
-      font-size: 2.5rem;
-    }
+    .section-title-area h2 { font-size: 2.75rem; }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     .gallery-item {
       border: 1px solid var(--border);
       background: var(--bg-card);
-      border-radius: 0.25rem;
+      border-radius: 0.35rem;
       overflow: hidden;
       box-shadow: var(--shadow-deep);
+      display: flex;
+      transition: var(--transition-smooth);
     }
 
     .gallery-item img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      min-height: 420px;
       aspect-ratio: 4 / 5;
       object-fit: cover;
       display: block;
-      transition: transform 0.3s ease;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.04);
-    }
+    .gallery-item:hover img { transform: scale(1.05); }
 
-    /* Booking CTA */
+    /* CTA Area Layout */
     .booking-cta {
-      background: var(--bg-secondary);
-      padding: 5rem 0;
+      background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg) 100%);
+      padding: 6rem 0;
       text-align: center;
+      border-top: 1px solid var(--border);
     }
 
-    .booking-cta h2 {
-      font-size: 2.25rem;
-      font-weight: 700;
-    }
+    .booking-cta h2 { font-size: 2.5rem; font-weight: 700; }
 
     .booking-cta p {
-      margin: 1rem auto 0;
-      max-width: 28rem;
+      margin: 1.25rem auto 0;
+      max-width: 30rem;
       color: var(--fg-muted);
+      font-size: 1.1rem;
     }
 
-    .booking-cta .btn {
-      margin-top: 2rem;
-    }
+    .booking-cta .btn { margin-top: 2.5rem; }
 
-    /* Footer */
+    /* Footer Layout Elements */
     footer {
       border-top: 1px solid var(--border);
-      padding: 2rem 0;
+      padding: 3rem 0;
+      background: #151311;
     }
 
     footer .container {
@@ -390,42 +403,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .footer-links {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      font-size: 0.875rem;
+      gap: 2rem;
+      font-size: 0.9rem;
     }
 
     .footer-links a {
       color: var(--fg-muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: var(--transition-smooth);
     }
 
     .footer-links a:hover { color: var(--gold); }
+    .copyright { text-align: center; font-size: 0.8rem; color: var(--fg-muted); }
 
-    .copyright {
-      padding-bottom: 1.5rem;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--fg-muted);
-    }
-
-    /* Grid layouts */
-    .grid-2 {
-      display: grid;
-      gap: 2rem;
-    }
+    .grid-2 { display: grid; gap: 2rem; }
 
     @media (min-width: 768px) {
       .grid-2 { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-      .hero h1 { font-size: 4.5rem; }
-      .booking-cta h2 { font-size: 3rem; }
+      .hero h1 { font-size: 5rem; }
+      .booking-cta h2 { font-size: 3.5rem; }
       footer .container { flex-direction: row; }
     }
   </style>
@@ -440,7 +443,7 @@
   </header>
 
   <section id="top" class="hero">
-    <img id="hero-image-render" src="images/image1.png" alt="Sergio giving a sharp fresh haircut in his barbershop" class="hero-img" width="1920" height="1080">
+    <img id="hero-image-render" src="images/image.png" alt="Sergio giving a sharp fresh haircut in his barbershop" class="hero-img" width="1920" height="1080">
     <div class="hero-overlay"></div>
     <div class="hero-content container">
       <p class="hero-tag">Wichita, Kansas · @cuts.sergio</p>
@@ -448,14 +451,8 @@
       <p>Precision haircuts and lineups straight from your TikTok feed to the chair. Book online and walk out looking your best.</p>
       <div class="hero-actions">
         <a href="https://booksy.com/en-us/1298032_cuts-sergio_barber-shop_20639_wichita" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg">Book on Booksy</a>
-        <span class="badge-cash">💵 Cash Only</span>
+        <button id="cash-trigger-btn" class="btn-cash-trigger" title="Click to view payment requirements">Cash Only</button>
       </div>
-    </div>
-  </section>
-
-  <section class="cash-banner">
-    <div class="container">
-      <p>Please Note: <span class="text-gradient-gold">Cash Only</span> — come prepared!</p>
     </div>
   </section>
 
@@ -466,8 +463,8 @@
         <p style="color: var(--fg-muted); margin-top: 0.5rem;">Fresh client transformations right out of the chair.</p>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item" style="display: flex; align-items: center; justify-content: center; background: #000;">
-          <img src="images/image1.png" alt="Clean temple taper and razor sharp lineup" style="transform: rotate(90deg) scale(1.3); object-fit: cover;">
+        <div class="gallery-item">
+          <img src="images/image.png" alt="Clean temple taper and razor sharp lineup">
         </div>
         <div class="gallery-item">
           <img src="images/image2.png" alt="Freestyle barber design with textured top">
@@ -507,7 +504,7 @@
       </div>
     </div>
 
-    <div class="container" style="margin-top: 2rem;">
+    <div class="container" style="margin-top: 3rem;">
       <div class="card" style="display:flex; flex-direction:column;">
         <h2>Find The Shop</h2>
         <div class="location-address">
@@ -522,10 +519,10 @@
     </div>
   </section>
 
-  <section class="booking-cta">
+  <section id="booking-cta-section" class="booking-cta">
     <div class="container">
       <h2>Ready for a <span class="text-gradient-gold">fresh cut?</span></h2>
-      <p>Book your appointment online through Booksy. Search <strong style="color:var(--fg);">cuts.sergio</strong>. Remember — cash only.</p>
+      <p id="cta-text-target">Book your appointment online through Booksy. Search <strong style="color:var(--fg);">cuts.sergio</strong>. Remember — <span class="text-gradient-gold" style="font-weight: 600;">cash only</span>.</p>
       <a href="https://booksy.com/en-us/1298032_cuts-sergio_barber-shop_20639_wichita" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-xl">Book on Booksy</a>
     </div>
   </section>
@@ -538,16 +535,18 @@
         <a href="https://booksy.com/en-us/1298032_cuts-sergio_barber-shop_20639_wichita" target="_blank" rel="noopener noreferrer">Booksy</a>
       </div>
     </div>
-    <p class="copyright" style="margin-top: 1rem;">© 2026 Cuts by Sergio · Wichita, KS</p>
+    <p class="copyright" style="margin-top: 2rem;">© 2026 Cuts by Sergio · Wichita, KS</p>
   </footer>
 
   <script>
     const imgFolder = "images/";
     const heroImgEl = document.getElementById("hero-image-render");
+    const cashTriggerBtn = document.getElementById("cash-trigger-btn");
+    const targetCTA = document.getElementById("booking-cta-section");
+    const textTarget = document.getElementById("cta-text-target");
 
-    // Dynamic asset array targeting your active file names
     const heroImages = [
-      "image1.png",
+      "image.png",
       "image2.png",
       "image3.png"
     ];
@@ -556,24 +555,29 @@
     const intervalTime = 5000; 
 
     function cycleHeroBackground() {
-      heroImgEl.style.opacity = "0.3";
+      heroImgEl.style.opacity = "0.15";
       
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % heroImages.length;
         heroImgEl.src = imgFolder + heroImages[currentIndex];
-        
-        // Handle custom transformation parameters if image 1 is structural
-        if(heroImages[currentIndex] === "image1.png") {
-            heroImgEl.style.transform = "rotate(90deg) scale(1.3)";
-        } else {
-            heroImgEl.style.transform = "none";
-        }
-        
-        heroImgEl.style.opacity = "1";
-      }, 400); 
+        heroImgEl.style.opacity = "0.45";
+      }, 750); 
     }
 
     setInterval(cycleHeroBackground, intervalTime);
+
+    cashTriggerBtn.addEventListener("click", () => {
+      targetCTA.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      setTimeout(() => {
+        textTarget.style.transform = "scale(1.05)";
+        textTarget.style.transition = "transform 0.3s ease";
+        
+        setTimeout(() => {
+          textTarget.style.transform = "scale(1)";
+        }, 500);
+      }, 500);
+    });
   </script>
 
 </body>
