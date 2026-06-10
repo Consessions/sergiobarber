@@ -440,7 +440,7 @@
   </header>
 
   <section id="top" class="hero">
-    <img id="hero-image-render" src="images/hero-barber.jpg" alt="Sergio giving a sharp fresh haircut in his barbershop" class="hero-img" width="1920" height="1080">
+    <img id="hero-image-render" src="images/image1.png" alt="Sergio giving a sharp fresh haircut in his barbershop" class="hero-img" width="1920" height="1080">
     <div class="hero-overlay"></div>
     <div class="hero-content container">
       <p class="hero-tag">Wichita, Kansas · @cuts.sergio</p>
@@ -466,14 +466,14 @@
         <p style="color: var(--fg-muted); margin-top: 0.5rem;">Fresh client transformations right out of the chair.</p>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="images/portfolio1.jpg" alt="Mid drop fade haircut transformation">
+        <div class="gallery-item" style="display: flex; align-items: center; justify-content: center; background: #000;">
+          <img src="images/image1.png" alt="Clean temple taper and razor sharp lineup" style="transform: rotate(90deg) scale(1.3); object-fit: cover;">
         </div>
         <div class="gallery-item">
-          <img src="images/portfolio2.jpg" alt="Crisp line up and clean beard shape work">
+          <img src="images/image2.png" alt="Freestyle barber design with textured top">
         </div>
         <div class="gallery-item">
-          <img src="images/portfolio3.jpg" alt="Textured fringe hair styling clean cut">
+          <img src="images/image3.png" alt="Fresh men's haircut transformation">
         </div>
       </div>
     </div>
@@ -542,33 +542,37 @@
   </footer>
 
   <script>
-    // Define folder assets path and target image element 
     const imgFolder = "images/";
     const heroImgEl = document.getElementById("hero-image-render");
 
-    // Add list of image file names found in that directory
+    // Dynamic asset array targeting your active file names
     const heroImages = [
-      "hero-barber.jpg",
-      "portfolio1.jpg", 
-      "portfolio2.jpg",
-      "portfolio3.jpg"
+      "image1.png",
+      "image2.png",
+      "image3.png"
     ];
 
     let currentIndex = 0;
-    const intervalTime = 5000; // Transitions every 5 seconds
+    const intervalTime = 5000; 
 
     function cycleHeroBackground() {
-      // Apply slight fading effect during the index change
       heroImgEl.style.opacity = "0.3";
       
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % heroImages.length;
         heroImgEl.src = imgFolder + heroImages[currentIndex];
+        
+        // Handle custom transformation parameters if image 1 is structural
+        if(heroImages[currentIndex] === "image1.png") {
+            heroImgEl.style.transform = "rotate(90deg) scale(1.3)";
+        } else {
+            heroImgEl.style.transform = "none";
+        }
+        
         heroImgEl.style.opacity = "1";
-      }, 400); // Wait for initial fade out before updating source asset
+      }, 400); 
     }
 
-    // Initialize interval engine loop
     setInterval(cycleHeroBackground, intervalTime);
   </script>
 
